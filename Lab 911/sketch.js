@@ -1,22 +1,37 @@
-//  Global variables
+var square = [];
+var numberOfSquares = 8
+var squareSize;
+var squareColor = (0,0,0);
+
+
 function setup() {
-var cnv = createCanvas(800, 800);
-	cnv.position((windowWidth-width)/2, 30);
-	background(235);
-
-// Create a function that loads the squares into an
-// array of square objects and call the function (this is line 18)
-function draw() {
-	background(20,20,20);
+  var cnv = createCanvas(800, 800);
+  cnv.position((windowWidth-width)/2, 30);
+  loadSquares(8);
+  for(var i = 0; i < square.length; i++){
+    squareSize = width/numberOfSquares;
+    square[i].render();
+  }
 }
 
-function loadSquares() {
-	var rowNum=0;
-	for (var i = 0; i < 64; i++) {
-		var loc = createVector(x, y);
-	}
 
-	for (var row = 0; row < 8; row++) {
-		location-
-	}
+function loadSquares(size){
+  var rowNum = 0;
+  for(var rowNum = 0; rowNum < size; rowNum++){
+    var row = 100*rowNum
+    for(var colNum= 0; colNum < size; colNum++){
+      var col = 100*colNum
+      var loc = createVector (col,row);
+      if((rowNum + colNum)%2 == 0){  
+        squareColor = (0,0,0);
+      }else{
+        squareColor = (255,255,255);
+      }
+      var s = new Sqr(loc, 100, squareColor);
+      square.push(s);
+
+
+    }
+  }
 }
+
